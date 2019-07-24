@@ -4,21 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btn_normal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="普通使用"
-        android:onClick="click"/>
+        android:onClick="click"
+        android:text="普通使用" />
 
     <Button
         android:id="@+id/btn_texture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="texture使用"/>
+        android:onClick="click"
+        android:text="texture使用" />
 
 </LinearLayout>

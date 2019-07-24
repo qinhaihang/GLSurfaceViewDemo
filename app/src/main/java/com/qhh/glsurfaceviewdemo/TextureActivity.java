@@ -19,5 +19,6 @@ public class TextureActivity extends AppCompatActivity {
         mGlSurfaceView.setEGLContextClientVersion(2);
         mTextureRender = new TextureRender(this);
         mGlSurfaceView.setRenderer(mTextureRender);
+
     }
 }
