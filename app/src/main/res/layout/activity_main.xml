@@ -15,4 +15,10 @@
         android:text="普通使用"
         android:onClick="click"/>
 
+    <Button
+        android:id="@+id/btn_texture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="texture使用"/>
+
 </LinearLayout>

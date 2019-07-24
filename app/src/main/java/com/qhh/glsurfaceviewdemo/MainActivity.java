@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_normal:
                 startActivity(new Intent(this,NormalActivity.class));
                 break;
+            case R.id.btn_texture:
+                startActivity(new Intent(this,TextureActivity.class));
+                break;
             default:
                 break;
         }
