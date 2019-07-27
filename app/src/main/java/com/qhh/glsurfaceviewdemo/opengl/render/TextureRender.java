@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.GLSurfaceView;
+import android.util.Log;
 
 import com.qhh.glsurfaceviewdemo.R;
 import com.qhh.glsurfaceviewdemo.opengl.glprogram.TextureGLProgram;
@@ -77,6 +78,8 @@ public class TextureRender implements GLSurfaceView.Renderer {
     protected float[] mProjectionMatrix = new float[16];
 
     private final TextureGLProgram mTextureGLProgram;
+    private int mWidth;
+    private int mHeight;
 
     public TextureRender(Context context) {
         mContext = context;
@@ -97,12 +100,16 @@ public class TextureRender implements GLSurfaceView.Renderer {
 
         mTextureGLProgram.buildProgram();
 
-        final int[] textureObjectIds = new int[1];
-        glGenTextures(1, textureObjectIds, 0);
-        int textureId = textureObjectIds[0];
         final BitmapFactory.Options options = new BitmapFactory.Options();
         final Bitmap bitmap = BitmapFactory.decodeResource(
                 mContext.getResources(), R.drawable.face, options);
+
+        mWidth = bitmap.getWidth();
+        mHeight = bitmap.getHeight();
+
+        final int[] textureObjectIds = new int[1];
+        glGenTextures(1, textureObjectIds, 0);
+        int textureId = textureObjectIds[0];
         glBindTexture(GL_TEXTURE_2D, textureId);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -124,9 +131,11 @@ public class TextureRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
+        Log.d("qhh_texture","width = " + width + ",height = " + height);
         glViewport(0, 0, width, height);
         // 正交投影
-        float rate = (float) height / width;
+//        float rate = (float) height / width;
+        float rate = (float) mHeight / mWidth; //使用图片高宽比，则显示出来的图片大小不会改变
         orthoM(mProjectionMatrix, 0, -1, 1, -rate, rate, -1, 1);
         // 赋值
         glUniformMatrix4fv(mTextureGLProgram.getuMatrixLocation(), 1, false, mProjectionMatrix, 0);
