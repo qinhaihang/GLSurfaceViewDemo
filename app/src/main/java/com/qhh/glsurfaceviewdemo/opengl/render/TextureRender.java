@@ -52,7 +52,7 @@ import static com.qhh.glsurfaceviewdemo.opengl.Constants.BYTES_PER_FLOAT;
  * @updateDate $Date$
  * @updateDes
  */
-public class TextureRender implements GLSurfaceView.Renderer {
+    public class TextureRender implements GLSurfaceView.Renderer {
 
     private Context mContext;
 
@@ -88,6 +88,7 @@ public class TextureRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+        Log.d("qhh_texture","onSurfaceCreated");
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         mVertexBuffer = ByteBuffer.allocateDirect(mVertexArray.length * BYTES_PER_FLOAT)
                 .order(ByteOrder.nativeOrder())
@@ -131,7 +132,7 @@ public class TextureRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
-        Log.d("qhh_texture","width = " + width + ",height = " + height);
+        Log.d("qhh_texture","onSurfaceChanged,width = " + width + ",height = " + height);
         glViewport(0, 0, width, height);
         // 正交投影
 //        float rate = (float) height / width;
@@ -143,6 +144,7 @@ public class TextureRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onDrawFrame(GL10 gl) {
+        Log.d("qhh_texture","onDrawFrame");
         glClear(GL_COLOR_BUFFER_BIT);
         glDrawArrays(GL_TRIANGLE_FAN, 0, 6);
     }

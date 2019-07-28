@@ -3,6 +3,7 @@ package com.qhh.glsurfaceviewdemo.opengl.render;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
+import android.util.Log;
 
 import com.qhh.glsurfaceviewdemo.opengl.glprogram.NormalGLProgram;
 
@@ -57,6 +58,7 @@ public class NormalRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+        Log.d("qhh_normal","onSurfaceCreated");
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         mVertexBuffer = ByteBuffer.allocateDirect(mVertexArray.length * BYTES_PER_FLOAT)
                 .order(ByteOrder.nativeOrder())
@@ -75,6 +77,7 @@ public class NormalRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
+        Log.d("qhh_normal","onSurfaceChanged");
         glViewport(0, 0, width, height);
         // 正交变换，只考虑竖屏的情况
         float rate = height * 1.0f / width;
@@ -84,6 +87,7 @@ public class NormalRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onDrawFrame(GL10 gl) {
+        Log.d("qhh_normal","onDrawFrame");
         glClear(GL_COLOR_BUFFER_BIT);
         glDrawArrays(GL_TRIANGLE_FAN, 0, 6);
     }
