@@ -27,7 +27,7 @@ public class TextureActivity extends AppCompatActivity {
     public void click(View view) {
         switch (view.getId()) {
             case R.id.btn_refresh:
-//                mGlSurfaceView.requestRender();
+                mGlSurfaceView.requestRender();
                 break;
             default:
                 break;

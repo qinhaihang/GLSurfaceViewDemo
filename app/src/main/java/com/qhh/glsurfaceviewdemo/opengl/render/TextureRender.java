@@ -115,6 +115,8 @@ import static com.qhh.glsurfaceviewdemo.opengl.Constants.BYTES_PER_FLOAT;
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         texImage2D(GL_TEXTURE_2D, 0, bitmap, 0);
+        //画字节流的方法
+        //glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,mWidth,mHeight,0,GL_RGBA,GL_UNSIGNED_BYTE,ByteBuffer.allocate(3));
         glGenerateMipmap(GL_TEXTURE_2D);
         bitmap.recycle();
         // 使用该Texture
